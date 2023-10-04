@@ -13,6 +13,9 @@
 
 int main(void)
 {
-	printf("Eres un tonto %\n", "%d");
+	void *a;
+
+	a = (void *)-3579;
+	printf("Eres un tonto %x\n", 9);
 	return(0);
 }

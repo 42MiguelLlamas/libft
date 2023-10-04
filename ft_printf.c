@@ -56,6 +56,16 @@ void	ft_putnbr(int nb)
 		 ft_putchar(nb + 48);
 }
 
+void ft_putunsigned(unsigned int nb)
+{
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		 ft_putchar(nb + 48);
+}
 int	ft_printf(char const *format, ...)
 {
 	va_list args;
@@ -75,9 +85,12 @@ int	ft_printf(char const *format, ...)
 */
 			if (*format == 'd')
 				ft_putnbr(va_arg(args, int));
-			/*
+			
 			if (*format == 'i')
+				ft_putnbr(va_arg(args, int));
 			if (*format == 'u')
+				ft_putunsigned(va_arg(args, unsigned int));
+/*
 			if (*format == 'x')
 			if (*format == 'X')
 			if (*format == '%')
@@ -95,6 +108,6 @@ int main(void)
 {
 	int a;
 
-	a = ft_printf("Eres tonto eh %d\n", 1224);
+	a = ft_printf("Eres tonto eh %s, %u veces", "sete", -1224);
 	return(0);
 }
