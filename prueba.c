@@ -16,6 +16,6 @@ int main(void)
 	void *a;
 
 	a = (void *)-3579;
-	printf("Eres un tonto %x\n", 9);
+	printf("Eres un tonto %x\n", 2147483647);
 	return(0);
 }

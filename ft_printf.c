@@ -56,12 +56,15 @@ void	ft_putnbr(int nb)
 		 ft_putchar(nb + 48);
 }
 
-void ft_putunsigned(unsigned int nb)
+void ft_putbase(unsigned int nb, char *base)
 {
-	if (nb > 9)
+	unsigned int len;
+	
+	len = strlen(base);
+	if (nb > len)
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_putbase(nb / 10, base);
+		ft_putbase(nb % 10, base);
 	}
 	else
 		 ft_putchar(nb + 48);
@@ -80,22 +83,19 @@ int	ft_printf(char const *format, ...)
 				ft_putchar(va_arg(args, int));
 			if (*format == 's')
 				ft_putstr(va_arg(args, const char *));
-			/*
-			if (*format == 'p')
-*/
+//			if (*format == 'p')
 			if (*format == 'd')
 				ft_putnbr(va_arg(args, int));
-			
 			if (*format == 'i')
 				ft_putnbr(va_arg(args, int));
 			if (*format == 'u')
-				ft_putunsigned(va_arg(args, unsigned int));
-/*
+				ft_putbase(va_arg(args, unsigned int), "0123456789");
 			if (*format == 'x')
+				ft_putbase(va_arg(args, unsigned int), "0123456789abcdef");
 			if (*format == 'X')
+				ft_putbase(va_arg(args, unsigned int), "0123456789ABCDEF");
 			if (*format == '%')
-				write(1, *(format + 1), 1);
-			*/
+				write(1, "%", 1);
 		}
 		else
 			write(1, format, 1);
@@ -108,6 +108,6 @@ int main(void)
 {
 	int a;
 
-	a = ft_printf("Eres tonto eh %s, %u veces", "sete", -1224);
+	a = ft_printf("Char %c, string %s, int %d, int %i, unsigned 10 %u, hex min %x, hex may %X, porcen %%\n", 'c', "sete", -1224, 123, 1247, 787, 787);
 	return(0);
 }
