@@ -13,6 +13,6 @@
 
 int main(void)
 {
-	printf("Eres un%\n", "%d");
+	printf("Eres un tonto %\n", "%d");
 	return(0);
 }
