@@ -16,12 +16,12 @@ void	ft_putbase(unsigned int nb, char *base, size_t *count)
 	unsigned int	len;
 
 	if (!base)
-	len = ft_strlen(*base);
+	len = ft_strlen(base);
 	if (nb > len)
 	{
-		ft_putbase(nb / 10, base, count);
-		ft_putbase(nb % 10, base, count);
+		ft_putbase(nb / len, base, count);
+		ft_putbase(nb % len, base, count);
 	}
 	else
-		ft_putchar(nb + 48, count);
+		ft_putchar(base[nb], count);
 }

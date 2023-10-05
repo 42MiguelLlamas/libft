@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_format(char const *format, va_list args, size_t *count)
+static void	ft_format(char const *format, va_list args, size_t *count)
 {
 	if (*format == 'c')
 		ft_putchar(va_arg(args, int), count);
@@ -21,14 +21,16 @@ void	ft_format(char const *format, va_list args, size_t *count)
 		ft_putnbr(va_arg(args, int), count);
 	if (*format == 'i')
 		ft_putnbr(va_arg(args, int), count);
+	if (*format == 'p')
+		ft_putvoid(va_arg(args, void *), HEXLOW_BASE, count);
 	if (*format == 'u')
-		ft_putbase(va_arg(args, unsigned int), "0123456789", count);
+		ft_putbase(va_arg(args, unsigned int), DEC_BASE, count);
 	if (*format == 'x')
-		ft_putbase(va_arg(args, unsigned int), "0123456789abcdef", count);
+		ft_putbase(va_arg(args, unsigned int), HEXLOW_BASE, count);
 	if (*format == 'X')
-		ft_putbase(va_arg(args, unsigned int), "0123456789ABCDEF", count);
+		ft_putbase(va_arg(args, unsigned int), HEXUP_BASE, count);
 	if (*format == '%')
-		ft_putchar('%', count);
+		ft_putchar(*format, count);
 }
 
 int	ft_printf(char const *format, ...)
@@ -54,8 +56,6 @@ int	ft_printf(char const *format, ...)
 		format++;
 	}
 	va_end(args);
-	if (i != 0)
-		return (i);
 	return (count);
 }
 

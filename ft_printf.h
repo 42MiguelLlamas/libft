@@ -17,11 +17,16 @@
 # include <stdarg.h>
 # include <stdio.h>
 
+# define HEXUP_BASE "0123456789ABCDEF"
+# define HEXLOW_BASE "0123456789abcdef"
+# define DEC_BASE "0123456789"
+
 int		ft_printf(char const *format, ...);
 
 void	ft_putbase(unsigned int nb, char *base, size_t *count);
 void	ft_putnbr(int nb, size_t *count);
 void	ft_putstr(char const *s, size_t *count);
 void	ft_putchar(char c, size_t *count);
-size_t	ft_strlen(const char s);
+void    ft_putvoid(void *ptr, char *base, size_t *count);
+size_t	ft_strlen(const char *s);
 #endif
