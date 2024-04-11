@@ -9,7 +9,7 @@
 /*   Updated: 2023/09/12 12:20:01 by mllamas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
+#include <ctype.h>
 
 size_t	ft_strlen(const char *s)
 {

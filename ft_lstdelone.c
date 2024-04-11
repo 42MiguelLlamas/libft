@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putbase.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mllamas- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 17:46:30 by mllamas-          #+#    #+#             */
-/*   Updated: 2023/10/04 18:33:03 by mllamas-         ###   ########.fr       */
+/*   Created: 2023/09/28 11:12:55 by mllamas-          #+#    #+#             */
+/*   Updated: 2024/04/11 19:13:57 by mllamas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_putbase(unsigned int nb, char *base, size_t *count)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	unsigned int	len;
-
-	if (!base)
-	len = ft_strlen(base);
-	if (nb > len)
+	if (del && lst)
 	{
-		ft_putbase(nb / len, base, count);
-		ft_putbase(nb % len, base, count);
+		(*del)(lst->content);
+		free(lst);
 	}
-	else
-		ft_putchar(base[nb], count);
 }
